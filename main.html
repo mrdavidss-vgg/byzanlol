@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link href="image/x-icon;base64,AAABAAEAEBAAAAEACABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAYqMdAAC8/wBanhIAAbT0AGSkIQBfoRkAWZ4RAP///wAJt/QAZKQgAF+hGAATuvUAFLr1AFyfFQAVuvUAY6QfAGGiHABbnxQAZqUjAAa29AAHtvQACLb0AGGiGwAQufUAErn1AFufEwBlpSIAYKIaAF2gFwBeoBcA9/f3AAK19AADtfQABLX0AAW19AAMuPUAYqMeAA249QAOuPUAXaAWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICCSMjFhUVIyMjIyMjAgICIyMjIyMjIyMjIyMjIwQCAiQGBwgICAgICAgIBwMgAiYCFwcICAgICAgICAcaIQInAhEHBwgfHx8fCAcHEiECAgIBBwcHBwcHBwcHBxIiAgIYJSUBBwcICAcHBygOIwICGRAQBwcICAgIBwcHDiMCAgwKChAlCB8fCAYeHSgUAgINGwUKEAcICAcGCx4oFAICDxMbBwcHBwcHHAseHRQCAiMjIyMjIyMjIyMjIyMUAgIjIyMjIyMjIyMjIyMjIwIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAP//AAA=" rel="icon" type="image/x-icon">
+    <link href="image/x-icon;base64,AAABAAEAEBAAAAEACABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAYqMdAAC8/wBanhIAAbT0AGSkIQBfoRkAWZ4RAP///wAJt/QAZKQgAF+hGAATuvUAFLr1AFyfFQAVuvUAY6QfAGGiHABbnxQAZqUjAAa29AAHtvQACLb0AGGiGwAQufUAErn1AFufEwBlpSIAYKIaAF2gFwBeoBcA9/f3AAK19AADtfQABLX0AAW19AAMuPUAYqMeAA249QAOuPUAXaAWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICCSMjFhUVIyMjIyMjIyMjIyMjIwQCAiQGBwgICAgICAgIBwMgAiYCFwcICAgICAgICAcaIQInAhEHBwgfHx8fCAcHEiECAgIBBwcHBwcHBwcHBxIiAgIYJSUBBwcICAcHBygOIwICGRAQBwcICAgIBwcHDiMCAgwKChAlCB8fCAYeHSgUAgINGwUKEAcICAcGCx4oFAICDxMbBwcHBwcHHAseHRQCAiMjIyMjIyMjIyMjIyMUAgIjIyMjIyMjIyMjIyMjIwIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAP//AAA=" rel="icon" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Your existing CSS styles remain the same */
         * {
             margin: 0;
             padding: 0;
@@ -26,6 +25,7 @@
             color: white;
             position: relative;
             min-height: 100vh;
+            transition: background 0.5s ease; 
         }
 
         body::before {
@@ -40,6 +40,296 @@
                 radial-gradient(circle at 90% 80%, rgba(101, 45, 147, 0.15) 0%, transparent 20%),
                 radial-gradient(circle at 50% 50%, rgba(101, 45, 147, 0.1) 0%, transparent 30%);
             z-index: -1;
+            transition: background 0.5s ease;
+        }
+
+        body.blue-theme {
+            background: linear-gradient(135deg, #001f3f, #003366, #001f3f);
+        }
+
+        body.blue-theme::before {
+            background:
+                radial-gradient(circle at 10% 20%, rgba(0, 80, 160, 0.15) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 80, 160, 0.15) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(0, 80, 160, 0.1) 0%, transparent 30%);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #2c0a47, #1a0a2e);
+            color: white;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            box-shadow: 0 0 30px rgba(106, 13, 173, 0.7);
+            border: 1px solid rgba(147, 112, 219, 0.5);
+            overflow: hidden;
+            transition: background 0.5s ease, border-color 0.5s ease; 
+        }
+
+        body.blue-theme .modal-content {
+            background: linear-gradient(135deg, #003366, #001f3f);
+            border-color: rgba(0, 100, 200, 0.5);
+            box-shadow: 0 0 30px rgba(0, 80, 160, 0.7);
+        }
+
+        .modal-header {
+            display: flex;
+            background: rgba(40, 20, 60, 0.9);
+            border-bottom: 2px solid rgba(147, 112, 219, 0.3);
+            transition: background 0.5s ease, border-color 0.5s ease;
+        }
+
+        body.blue-theme .modal-header {
+            background: rgba(0, 40, 80, 0.9);
+            border-bottom-color: rgba(0, 100, 200, 0.3);
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 15px;
+            background: linear-gradient(135deg, #2c0a47, #1a0a2e);
+            border: 1px solid rgba(147, 112, 219, 0.3);
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        body.blue-theme .tab-button {
+            background: linear-gradient(135deg, #003366, #001f3f);
+            border-color: rgba(0, 100, 200, 0.3);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #1a0a2e, #2c0a47);
+            border-color: rgba(147, 112, 219, 0.7);
+        }
+
+        body.blue-theme .tab-button.active {
+            background: linear-gradient(135deg, #001f3f, #003366);
+            border-color: rgba(0, 100, 200, 0.7);
+        }
+
+        .tab-button:hover:not(.active) {
+            background: linear-gradient(135deg, #3a1a57, #2c0a47);
+            border-color: rgba(147, 112, 219, 0.5);
+        }
+
+        body.blue-theme .tab-button:hover:not(.active) {
+            background: linear-gradient(135deg, #004488, #003366);
+            border-color: rgba(0, 100, 200, 0.5);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 25px;
+            max-height: 60vh;
+            overflow-y: auto;
+            background: rgba(30, 15, 50, 0.5);
+        }
+
+        body.blue-theme .tab-content {
+            background: rgba(0, 30, 60, 0.5);
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            background: linear-gradient(135deg, #2c0a47, #1a0a2e);
+            border: 1px solid rgba(147, 112, 219, 0.3);
+            color: white;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        body.blue-theme .close-modal {
+            background: linear-gradient(135deg, #003366, #001f3f);
+            border-color: rgba(0, 100, 200, 0.3);
+        }
+
+        .close-modal:hover {
+            background: linear-gradient(135deg, #3a1a57, #2c0a47);
+            border-color: rgba(147, 112, 219, 0.5);
+        }
+
+        body.blue-theme .close-modal:hover {
+            background: linear-gradient(135deg, #004488, #003366);
+            border-color: rgba(0, 100, 200, 0.5);
+        }
+
+        .color-presets {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .color-preset {
+            width: 100px;
+            height: 60px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .color-preset:hover {
+            transform: scale(1.05);
+        }
+
+        .color-preset.selected {
+            border-color: white;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .current-gradient {
+            background: linear-gradient(135deg, #1a0a2e, #2c0a47, #1a0a2e);
+        }
+
+        .blue-gradient {
+            background: linear-gradient(135deg, #001f3f, #003366, #001f3f);
+        }
+
+        .patch-notes-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .patch-notes-list li {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: rgba(50, 25, 70, 0.5);
+            border-radius: 8px;
+            border-left: 4px solid #9370db; 
+        }
+
+        body.blue-theme .patch-notes-list li {
+            background: rgba(0, 50, 100, 0.5);
+            border-left-color: #0088ff; 
+        }
+
+        .patch-version {
+            display: block;
+            font-weight: bold;
+            color: #d4afdd; 
+            margin-bottom: 5px;
+        }
+
+        body.blue-theme .patch-version {
+            color: #66ccff;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #9370db;
+        }
+
+        body.blue-theme input:checked + .slider {
+            background-color: #0088ff;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .patch-notes-section {
+            display: none; 
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(50, 25, 70, 0.5);
+            border-radius: 8px;
+        }
+
+        body.blue-theme .patch-notes-section {
+            background: rgba(0, 50, 100, 0.5);
+        }
+
+        #viewPatchNotesBtn {
+            margin-top: 15px;
+            background: linear-gradient(135deg, #2c0a47, #1a0a2e);
+            padding: 10px 15px;
+            border-radius: 30px;
+            border: 1px solid rgba(147, 112, 219, 0.4);
+            color: white;
+            cursor: pointer;
+            z-index: 1000;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        body.blue-theme #viewPatchNotesBtn {
+            background: linear-gradient(135deg, #003366, #001f3f);
+            border-color: rgba(0, 100, 200, 0.4); 
+        }
+
+        #viewPatchNotesBtn:hover {
+            background: linear-gradient(135deg, #3a1a57, #2c0a47); 
+            border-color: rgba(147, 112, 219, 0.5);
+        }
+
+        body.blue-theme #viewPatchNotesBtn:hover {
+            background: linear-gradient(135deg, #004488, #003366);
+            border-color: rgba(0, 100, 200, 0.5);
         }
 
         .container {
@@ -65,12 +355,19 @@
         h1 {
             font-size: 3.2rem;
             margin-bottom: 10px;
-            text-shadow: 0 0 15px rgba(106, 13, 173, 0.7);
+            text-shadow: 0 0 15px rgba(106, 13, 173, 0.7); 
             background: linear-gradient(to right, #d4afdd, #b19cd9, #9370db);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-text-fill-color: white; 
             position: relative;
             display: inline-block;
+        }
+
+        body.blue-theme h1 {
+            text-shadow: 0 0 15px rgba(0, 80, 160, 0.7); 
+            background: linear-gradient(to right, #66ccff, #44aaff, #0088ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: white; 
         }
 
         h1::after {
@@ -83,6 +380,10 @@
             height: 4px;
             background: linear-gradient(to right, transparent, #9370db, transparent);
             border-radius: 2px;
+        }
+
+        body.blue-theme h1::after {
+            background: linear-gradient(to right, transparent, #0088ff, transparent);
         }
 
         .subtitle {
@@ -113,10 +414,20 @@
             animation: float 6s ease-in-out infinite;
         }
 
+        body.blue-theme .section {
+            background: rgba(0, 30, 60, 0.6);
+            border-color: rgba(0, 100, 200, 0.3);
+        }
+
         .section:hover {
             transform: translateY(-10px) scale(1.03);
             box-shadow: 0 15px 35px rgba(147, 112, 219, 0.4);
             border-color: rgba(147, 112, 219, 0.7);
+        }
+
+        body.blue-theme .section:hover {
+            box-shadow: 0 15px 35px rgba(0, 100, 200, 0.4);
+            border-color: rgba(0, 100, 200, 0.7);
         }
 
         .section-header {
@@ -129,6 +440,11 @@
             position: relative;
         }
 
+        body.blue-theme .section-header {
+            background: rgba(0, 40, 80, 0.8);
+            border-bottom-color: rgba(0, 100, 200, 0.3);
+        }
+
         .section-header::after {
             content: '';
             position: absolute;
@@ -137,6 +453,11 @@
             width: 80%;
             height: 2px;
             background: linear-gradient(to right, transparent, #9370db, transparent);
+            border-radius: 2px;
+        }
+
+        body.blue-theme .section-header::after {
+            background: linear-gradient(to right, transparent, #0088ff, transparent);
         }
 
         .games-grid {
@@ -158,6 +479,11 @@
             overflow: hidden;
         }
 
+        body.blue-theme .game-card {
+            background: rgba(0, 50, 100, 0.7);
+            border-color: rgba(0, 100, 200, 0.2);
+        }
+
         .game-card::before {
             content: '';
             position: absolute;
@@ -169,14 +495,19 @@
             transition: 0.5s;
         }
 
-        .game-card:hover::before {
-            left: 100%;
+        body.blue-theme .game-card::before {
+            background: linear-gradient(90deg, transparent, rgba(0, 100, 200, 0.2), transparent);
         }
 
         .game-card:hover {
             background: rgba(70, 35, 90, 0.85);
             transform: scale(1.03);
             box-shadow: 0 5px 15px rgba(147, 112, 219, 0.3);
+        }
+
+        body.blue-theme .game-card:hover {
+            background: rgba(0, 70, 140, 0.85);
+            box-shadow: 0 5px 15px rgba(0, 100, 200, 0.3);
         }
 
         .game-title {
@@ -191,6 +522,10 @@
             margin-right: 12px;
             font-size: 1.4rem;
             color: #b19cd9;
+        }
+
+        body.blue-theme .game-title i {
+            color: #44aaff;
         }
 
         .game-desc {
@@ -213,10 +548,21 @@
             animation: pulse-border 2s infinite;
         }
 
+        body.blue-theme .timer {
+            background: rgba(0, 30, 60, 0.8);
+            border-color: rgba(0, 100, 200, 0.4);
+            box-shadow: 0 0 15px rgba(0, 100, 200, 0.3);
+        }
+
         .timer span {
             font-weight: 700;
             color: #d4afdd;
             text-shadow: 0 0 8px rgba(212, 175, 221, 0.5);
+        }
+
+        body.blue-theme .timer span {
+            color: #66ccff;
+            text-shadow: 0 0 8px rgba(102, 204, 255, 0.5);
         }
 
         .active-indicator {
@@ -229,6 +575,11 @@
             font-size: 1rem;
             z-index: 1000;
             border: 1px solid rgba(147, 112, 219, 0.4);
+        }
+
+        body.blue-theme .active-indicator {
+            background: rgba(0, 30, 60, 0.8);
+            border-color: rgba(0, 100, 200, 0.4);
         }
 
         .active-indicator.active {
@@ -250,6 +601,10 @@
             border-top: 1px solid rgba(147, 112, 219, 0.2);
         }
 
+        body.blue-theme footer {
+            border-top-color: rgba(0, 100, 200, 0.2);
+        }
+
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-15px); }
@@ -263,6 +618,11 @@
         @keyframes pulse-border {
             0%, 100% { box-shadow: 0 0 15px rgba(147, 112, 219, 0.3); }
             50% { box-shadow: 0 0 25px rgba(147, 112, 219, 0.6); }
+        }
+
+        body.blue-theme @keyframes pulse-border {
+            0%, 100% { box-shadow: 0 0 15px rgba(0, 100, 200, 0.3); }
+            50% { box-shadow: 0 0 25px rgba(0, 100, 200, 0.6); }
         }
 
         @keyframes glow {
@@ -298,6 +658,43 @@
     <div class="timer">Redirect in: <span id="countdown">15</span>s</div>
     <div class="active-indicator inactive" id="activity-indicator">Inactive</div>
 
+    <button id="openSettings" style="position: fixed; top: 20px; left: 20px; background: linear-gradient(135deg, #2c0a47, #1a0a2e); padding: 10px 15px; border-radius: 30px; border: 1px solid rgba(147, 112, 219, 0.4); color: white; cursor: pointer; z-index: 1000;">⚙️ Settings</button>
+
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <div class="modal-header">
+                <button class="tab-button active" data-tab="settings">Settings</button>
+            </div>
+            <div id="settingsTab" class="tab-content active">
+
+                <h3>Custom Color Gradient</h3>
+                <p>Choose a background color scheme:</p>
+                <div class="color-presets">
+                    <div class="color-preset current-gradient selected" data-gradient="current"></div>
+                    <div class="color-preset blue-gradient" data-gradient="blue"></div>
+                </div>
+
+                <button id="viewPatchNotesBtn">View Patch Notes</button>
+
+                <div id="patchNotesSection" class="patch-notes-section">
+                    <h3>Patch Notes</h3>
+                    <p>Details about the latest updates.</p>
+                    <ul class="patch-notes-list">
+                        <li>
+                            <span class="patch-version">v0.2 - October 28, 2025:</span>
+                            <p>Added v0.2 patch notes. fixed most issues added stuff.</p>
+                        </li>
+                        <li>
+                            <span class="patch-version">v0.1 - October 27, 2025:</span>
+                            <p>Initial release of byzan.lol homepage.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <header>
             <h1>byzan.lol</h1>
@@ -305,15 +702,14 @@
         </header>
 
         <div class="game-sections">
-            <!-- Action Games Section (Main Section) -->
             <div class="section">
                 <div class="section-header">Physical Classes</div>
                 <div class="games-grid">
-                    <div class="game-card" onclick="launchGame('  https://raw.githubusercontent.com/davidspoofy/byzanlol/refs/heads/main/g4mes/1v1-lol.html')">
+                    <div class="game-card" onclick="launchGame('https://raw.githubusercontent.com/davidspoofy/byzanlol/refs/heads/main/g4mes/1v1-lol.html')">
                         <div class="game-title"><i>⚔️</i> 1v1.lol</div>
                         <div class="game-desc">Battle royale in a fun cartoon style</div>
                     </div>
-                    <div class="game-card" onclick="launchGame('https://raw.githubusercontent.com/mrdav/byzanlol/refs/heads/main/g4mes/crazycattle3d.html')">
+                    <div class="game-card" onclick="launchGame('https://raw.githubusercontent.com/davidspoofy/byzanlol/refs/heads/main/g4mes/crazycattle3d.html')">
                         <div class="game-title"><i>🐄</i> Crazy Cattle 3D</div>
                         <div class="game-desc">3D cow racing and action game</div>
                     </div>
@@ -333,13 +729,6 @@
             </div>
         </div>
 
-    <!-- example 
-                    <div class="game-card" onclick="launchGame('https://example.com/')"> 
-                        <div class="game-title"><i>🎮</i> example class</div> 
-                        <div class="game-desc">example description of the class</div> 
-                    </div> 
-    !-->
-
         <footer>
             <p>byzan.lol &copy; 2025</p>
         </footer>
@@ -351,6 +740,79 @@
         let countdownElement = document.getElementById('countdown');
         let activityIndicator = document.getElementById('activity-indicator');
         let timer;
+
+        const modal = document.getElementById('settingsModal');
+        const openSettingsBtn = document.getElementById('openSettings');
+        const closeModalBtn = document.querySelector('.close-modal');
+        const colorPresets = document.querySelectorAll('.color-preset');
+
+        const viewPatchNotesBtn = document.getElementById('viewPatchNotesBtn');
+        const patchNotesSection = document.getElementById('patchNotesSection');
+        let patchNotesVisible = false; 
+
+        function initializeSettings() {
+            const savedGradient = localStorage.getItem('selectedGradient') || 'current';
+            
+            if (savedGradient === 'current') {
+                document.body.classList.remove('blue-theme');
+            } else if (savedGradient === 'blue') {
+                document.body.classList.add('blue-theme');
+            }
+            
+            colorPresets.forEach(preset => {
+                preset.classList.remove('selected');
+                if (preset.getAttribute('data-gradient') === savedGradient) {
+                    preset.classList.add('selected');
+                }
+            });
+        }
+
+        openSettingsBtn.addEventListener('click', () => {
+            modal.style.display = 'flex';
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+            patchNotesSection.style.display = 'none';
+            patchNotesVisible = false;
+            viewPatchNotesBtn.textContent = 'View Patch Notes';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+                patchNotesSection.style.display = 'none';
+                patchNotesVisible = false;
+                viewPatchNotesBtn.textContent = 'View Patch Notes';
+            }
+        });
+
+        viewPatchNotesBtn.addEventListener('click', () => {
+            if (patchNotesVisible) {
+                patchNotesSection.style.display = 'none';
+                viewPatchNotesBtn.textContent = 'View Patch Notes';
+            } else {
+                patchNotesSection.style.display = 'block';
+                viewPatchNotesBtn.textContent = 'Hide Patch Notes';
+            }
+            patchNotesVisible = !patchNotesVisible;
+        });
+
+        colorPresets.forEach(preset => {
+            preset.addEventListener('click', () => {
+                const gradientType = preset.getAttribute('data-gradient');
+                colorPresets.forEach(p => p.classList.remove('selected'));
+                preset.classList.add('selected');
+
+                if (gradientType === 'current') {
+                    document.body.classList.remove('blue-theme');
+                } else if (gradientType === 'blue') {
+                    document.body.classList.add('blue-theme');
+                }
+                
+                localStorage.setItem('selectedGradient', gradientType);
+            });
+        });
 
         function launchGame(gameUrl) {
             resetInactiveTimer();
@@ -367,7 +829,7 @@
                         <html>
                         <head>
                             <title>Home</title>
-                            <link href="image/x-icon;base64,AAABAAEAEBAAAAEACABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAYqMdAAC8/wBanhIAAbT0AGSkIQBfoRkAWZ4RAP///wAJt/QAZKQgAF+hGAATuvUAFLr1AFyfFQAVuvUAY6QfAGGiHABbnxQAZqUjAAa29AAHtvQACLb0AGGiGwAQufUAErn1AFufEwBlpSIAYKIaAF2gFwBeoBcA9/f3AAK19AADtfQABLX0AAW19AAMuPUAYqMeAA249QAOuPUAXaAWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICCSMjFhUVIyMjIyMjAgICIyMjIyMjIyMjIyMjIwQCAiQGBwgICAgICAgIBwMgAiYCFwcICAgICAgICAcaIQInAhEHBwgfHx8fCAcHEiECAgIBBwcHBwcHBwcHBxIiAgIYJSUBBwcICAcHBygOIwICGRAQBwcICAgIBwcHDiMCAgwKChAlCB8fCAYeHSgUAgINGwUKEAcICAcGCx4oFAICDxMbBwcHBwcHHAseHRQCAiMjIyMjIyMjIyMjIyMUAgIjIyMjIyMjIyMjIyMjIwIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAP//AAA=" rel="icon" type="image/x-icon">
+                            <link href="image/x-icon;base64,AAABAAEAEBAAAAEACABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAYqMdAAC8/wBanhIAAbT0AGSkIQBfoRkAWZ4RAP///wAJt/QAZKQgAF+hGAATuvUAFLr1AFyfFQAVuvUAY6QfAGGiHABbnxQAZqUjAAa29AAHtvQACLb0AGGiGwAQufUAErn1AFufEwBlpSIAYKIaAF2gFwBeoBcA9/f3AAK19AADtfQABLX0AAW19AAMuPUAYqMeAA249QAOuPUAXaAWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICCSMjFhUVIyMjIyMjIyMjIyMjIwQCAiQGBwgICAgICAgIBwMgAiYCFwcICAgICAgICAcaIQInAhEHBwgfHx8fCAcHEiECAgIBBwcHBwcHBwcHBxIiAgIYJSUBBwcICAcHBygOIwICGRAQBwcICAgIBwcHDiMCAgwKChAlCB8fCAYeHSgUAgINGwUKEAcICAcGCx4oFAICDxMbBwcHBwcHHAseHRQCAiMjIyMjIyMjIyMjIyMUAgIjIyMjIyMjIyMjIyMjIwIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAP//AAA=" rel="icon" type="image/x-icon">
                         </head>
                         <body>${html}</body>
                         </html>
@@ -393,7 +855,7 @@
                 countdownElement.textContent = maxInactiveTime - inactiveTime;
 
                 if (inactiveTime >= maxInactiveTime) {
-                    window.location.href = 'https://google.com  ';
+                    window.location.href = 'https://google.com';
                     clearInterval(timer);
                 }
             }, 1000);
@@ -403,6 +865,7 @@
             document.addEventListener(event, resetInactiveTimer, true);
         });
 
+        initializeSettings();
         resetInactiveTimer();
     </script>
 </body>
