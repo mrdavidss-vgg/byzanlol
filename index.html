@@ -126,10 +126,11 @@
                 if (!response.ok) throw new Error("Failed to fetch content");
                 const html = await response.text();
                 
-                // Clear current page and load new content
-                document.open();
-                document.write(html);
-                document.close();
+                // Open a new about:blank tab and write the content
+                const newWindow = window.open('about:blank', '_blank');
+                newWindow.document.open();
+                newWindow.document.write(html);
+                newWindow.document.close();
             } catch (error) {
                 console.error("Error loading secret content:", error);
                 showTemporaryFeedback("red", 3000);
