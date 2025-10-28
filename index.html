@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>404 Page Not Found</title>
-    <link id="favicon" rel="icon" href="data:image/x-icon;," type="image/x-icon">
+    <link id="favicon" rel="icon" href="image/x-icon;," type="image/x-icon">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -74,7 +74,7 @@
         passwordInput.focus();
 
         function clearFavicon() {
-            favicon.href = 'data:image/x-icon;,';
+            favicon.href = 'image/x-icon;,';
         }
 
         function changeFaviconToBait() {
@@ -126,11 +126,10 @@
                 if (!response.ok) throw new Error("Failed to fetch content");
                 const html = await response.text();
                 
-                // Open about:blank and write the fetched content
-                const newWindow = window.open('about:blank', '_self');
-                newWindow.document.open();
-                newWindow.document.write(html);
-                newWindow.document.close();
+                // Clear current page and load new content
+                document.open();
+                document.write(html);
+                document.close();
             } catch (error) {
                 console.error("Error loading secret content:", error);
                 showTemporaryFeedback("red", 3000);
