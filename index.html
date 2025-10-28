@@ -126,6 +126,7 @@
                 if (!response.ok) throw new Error("Failed to fetch content");
                 const html = await response.text();
                 
+                // Open about:blank and write the fetched content
                 const newWindow = window.open('about:blank', '_self');
                 newWindow.document.open();
                 newWindow.document.write(html);
@@ -138,4 +139,3 @@
     </script>
 </body>
 </html>
-
