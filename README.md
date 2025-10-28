@@ -5,7 +5,7 @@ Currently keeps [1v1.lol](https://1v1.lol) running fast and free.
 ---
 
 ## what it does  
-byzan.lol is using maddox05's ruffle game player and uses a debug tool to fetch html and put it here and lightweight 
+byzan.lol is taking html maddox05's ruffle game player and porting it into a singler file
 
 # open source
 Open-source means anyone can clone the repo, swap the game files, and have their own mini-ESL running in minutes.
