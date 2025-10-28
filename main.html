@@ -7,26 +7,27 @@
     <link href="image/x-icon;base64,AAABAAEAEBAAAAEACABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAYqMdAAC8/wBanhIAAbT0AGSkIQBfoRkAWZ4RAP///wAJt/QAZKQgAF+hGAATuvUAFLr1AFyfFQAVuvUAY6QfAGGiHABbnxQAZqUjAAa29AAHtvQACLb0AGGiGwAQufUAErn1AFufEwBlpSIAYKIaAF2gFwBeoBcA9/f3AAK19AADtfQABLX0AAW19AAMuPUAYqMeAA249QAOuPUAXaAWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICCSMjFhUVIyMjIyMjAgICIyMjIyMjIyMjIyMjIwQCAiQGBwgICAgICAgIBwMgAiYCFwcICAgICAgICAcaIQInAhEHBwgfHx8fCAcHEiECAgIBBwcHBwcHBwcHBxIiAgIYJSUBBwcICAcHBygOIwICGRAQBwcICAgIBwcHDiMCAgwKChAlCB8fCAYeHSgUAgINGwUKEAcICAcGCx4oFAICDxMbBwcHBwcHHAseHRQCAiMjIyMjIyMjIyMjIyMUAgIjIyMjIyMjIyMjIyMjIwIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAP//AAA=" rel="icon" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Your existing CSS styles remain the same */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
         }
-        
+
         html, body {
             height: 100%;
             width: 100%;
             overflow-x: hidden;
         }
-        
+
         body {
             background: linear-gradient(135deg, #1a0a2e, #2c0a47, #1a0a2e);
             color: white;
             position: relative;
             min-height: 100vh;
         }
-        
+
         body::before {
             content: '';
             position: absolute;
@@ -34,13 +35,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
+            background:
                 radial-gradient(circle at 10% 20%, rgba(101, 45, 147, 0.15) 0%, transparent 20%),
                 radial-gradient(circle at 90% 80%, rgba(101, 45, 147, 0.15) 0%, transparent 20%),
                 radial-gradient(circle at 50% 50%, rgba(101, 45, 147, 0.1) 0%, transparent 30%);
             z-index: -1;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -51,7 +52,7 @@
             position: relative;
             z-index: 2;
         }
-        
+
         header {
             text-align: center;
             padding: 30px 0;
@@ -60,7 +61,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         h1 {
             font-size: 3.2rem;
             margin-bottom: 10px;
@@ -71,7 +72,7 @@
             position: relative;
             display: inline-block;
         }
-        
+
         h1::after {
             content: '';
             position: absolute;
@@ -83,14 +84,14 @@
             background: linear-gradient(to right, transparent, #9370db, transparent);
             border-radius: 2px;
         }
-        
+
         .subtitle {
             font-size: 1.3rem;
             opacity: 0.8;
             margin-top: 15px;
             animation: pulse 3s infinite;
         }
-        
+
         .game-sections {
             display: flex;
             flex-direction: column;
@@ -98,7 +99,7 @@
             flex-grow: 1;
             margin-top: 10px;
         }
-        
+
         .section {
             background: rgba(30, 15, 50, 0.6);
             border-radius: 15px;
@@ -111,13 +112,13 @@
             transform: translateY(0);
             animation: float 6s ease-in-out infinite;
         }
-        
+
         .section:hover {
             transform: translateY(-10px) scale(1.03);
             box-shadow: 0 15px 35px rgba(147, 112, 219, 0.4);
             border-color: rgba(147, 112, 219, 0.7);
         }
-        
+
         .section-header {
             background: rgba(40, 20, 60, 0.8);
             padding: 18px;
@@ -127,7 +128,7 @@
             border-bottom: 2px solid rgba(147, 112, 219, 0.3);
             position: relative;
         }
-        
+
         .section-header::after {
             content: '';
             position: absolute;
@@ -137,14 +138,14 @@
             height: 2px;
             background: linear-gradient(to right, transparent, #9370db, transparent);
         }
-        
+
         .games-grid {
             padding: 20px;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 15px;
         }
-        
+
         .game-card {
             background: rgba(50, 25, 70, 0.7);
             border-radius: 12px;
@@ -156,7 +157,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .game-card::before {
             content: '';
             position: absolute;
@@ -167,17 +168,17 @@
             background: linear-gradient(90deg, transparent, rgba(147, 112, 219, 0.2), transparent);
             transition: 0.5s;
         }
-        
+
         .game-card:hover::before {
             left: 100%;
         }
-        
+
         .game-card:hover {
             background: rgba(70, 35, 90, 0.85);
             transform: scale(1.03);
             box-shadow: 0 5px 15px rgba(147, 112, 219, 0.3);
         }
-        
+
         .game-title {
             font-size: 1.2rem;
             margin-bottom: 8px;
@@ -185,19 +186,19 @@
             align-items: center;
             font-weight: 600;
         }
-        
+
         .game-title i {
             margin-right: 12px;
             font-size: 1.4rem;
             color: #b19cd9;
         }
-        
+
         .game-desc {
             font-size: 0.95rem;
             opacity: 0.8;
             line-height: 1.5;
         }
-        
+
         .timer {
             position: fixed;
             top: 20px;
@@ -211,13 +212,13 @@
             box-shadow: 0 0 15px rgba(147, 112, 219, 0.3);
             animation: pulse-border 2s infinite;
         }
-        
+
         .timer span {
             font-weight: 700;
             color: #d4afdd;
             text-shadow: 0 0 8px rgba(212, 175, 221, 0.5);
         }
-        
+
         .active-indicator {
             position: fixed;
             bottom: 20px;
@@ -229,17 +230,17 @@
             z-index: 1000;
             border: 1px solid rgba(147, 112, 219, 0.4);
         }
-        
+
         .active-indicator.active {
             color: #a4fca4;
             animation: glow 1.5s infinite alternate;
         }
-        
+
         .active-indicator.inactive {
             color: #ff6b6b;
             animation: glow-red 1.5s infinite alternate;
         }
-        
+
         footer {
             text-align: center;
             margin-top: auto;
@@ -248,45 +249,45 @@
             font-size: 1rem;
             border-top: 1px solid rgba(147, 112, 219, 0.2);
         }
-        
+
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-15px); }
         }
-        
+
         @keyframes pulse {
             0%, 100% { opacity: 0.7; }
             50% { opacity: 1; }
         }
-        
+
         @keyframes pulse-border {
             0%, 100% { box-shadow: 0 0 15px rgba(147, 112, 219, 0.3); }
             50% { box-shadow: 0 0 25px rgba(147, 112, 219, 0.6); }
         }
-        
+
         @keyframes glow {
             from { text-shadow: 0 0 5px rgba(164, 252, 164, 0.5); }
             to { text-shadow: 0 0 20px rgba(164, 252, 164, 0.8); }
         }
-        
+
         @keyframes glow-red {
             from { text-shadow: 0 0 5px rgba(255, 107, 107, 0.5); }
             to { text-shadow: 0 0 20px rgba(255, 107, 107, 0.8); }
         }
-        
+
         @media (max-width: 768px) {
             .games-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             h1 {
                 font-size: 2.5rem;
             }
-            
+
             .subtitle {
                 font-size: 1.1rem;
             }
-            
+
             .container {
                 padding: 15px;
             }
@@ -296,37 +297,49 @@
 <body>
     <div class="timer">Redirect in: <span id="countdown">15</span>s</div>
     <div class="active-indicator inactive" id="activity-indicator">Inactive</div>
-    
+
     <div class="container">
         <header>
             <h1>byzan.lol</h1>
             <p class="subtitle">Go to your classes with just one click</p>
         </header>
-        
+
         <div class="game-sections">
             <!-- Action Games Section (Main Section) -->
             <div class="section">
                 <div class="section-header">Physical Classes</div>
                 <div class="games-grid">
-                    <div class="game-card" onclick="launchGame('https://raw.githubusercontent.com/mrdavidss-vgg/byzanlol/refs/heads/main/g4mes/1v1-lol.html')">
+                    <div class="game-card" onclick="launchGame('  https://raw.githubusercontent.com/davidspoofy/byzanlol/refs/heads/main/g4mes/1v1-lol.html')">
                         <div class="game-title"><i>⚔️</i> 1v1.lol</div>
+                        <div class="game-desc">Battle royale in a fun cartoon style</div>
                     </div>
-                    <div class="game-card" onclick="launchGame('https://raw.githubusercontent.com/mrdavidss-vgg/byzanlol/refs/heads/main/g4mes/crazycattle3d.html')">
+                    <div class="game-card" onclick="launchGame('https://raw.githubusercontent.com/mrdav/byzanlol/refs/heads/main/g4mes/crazycattle3d.html')">
                         <div class="game-title"><i>🐄</i> Crazy Cattle 3D</div>
+                        <div class="game-desc">3D cow racing and action game</div>
                     </div>
-                    <div class="game-card" onclick="launchGame('https://raw.githubusercontent.com/mrdavidss-vgg/byzanlol/refs/heads/main/g4mes/slope.html')">
+                    <div class="game-card" onclick="launchGame('https://raw.githubusercontent.com/davidspoofy/byzanlol/refs/heads/main/g4mes/slope.html')">
                         <div class="game-title"><i>下滑</i> Slope</div>
+                        <div class="game-desc">3D ball rolling through obstacles</div>
                     </div>
-                    <div class="game-card" onclick="launchGame('https://raw.githubusercontent.com/mrdavidss-vgg/byzanlol/refs/heads/main/g4mes/gunspin.html')">
+                    <div class="game-card" onclick="launchGame('https://raw.githubusercontent.com/davidspoofy/byzanlol/refs/heads/main/g4mes/gunspin.html')">
                         <div class="game-title"><i>🔫</i> Gunspin</div>
-                        
-                    <div class="game-card" onclick="launchGame('https://raw.githubusercontent.com/mrdavidss-vgg/byzanlol/refs/heads/main/g4mes/minecraft.html')">
-                        <div class="game-title"><i>🟩</i> Minecraft</div>
+                        <div class="game-desc">Fast-paced gun spinning action</div>
+                    </div>
+                    <div class="game-card" onclick="launchGame('https://raw.githubusercontent.com/davidspoofy/byzanlol/refs/heads/main/g4mes/gunspin.html')"> 
+                        <div class="game-title"><i>🟩</i> Minecraft</div> 
+                        <div class="game-desc">The Class of Minecraft is a adventrous class.</div> 
                     </div>
                 </div>
             </div>
         </div>
-        
+
+    <!-- example 
+                    <div class="game-card" onclick="launchGame('https://example.com/')"> 
+                        <div class="game-title"><i>🎮</i> example class</div> 
+                        <div class="game-desc">example description of the class</div> 
+                    </div> 
+    !-->
+
         <footer>
             <p>byzan.lol &copy; 2025</p>
         </footer>
@@ -334,22 +347,19 @@
 
     <script>
         let inactiveTime = 0;
-        const maxInactiveTime = 15; // 15 seconds
+        const maxInactiveTime = 15;
         let countdownElement = document.getElementById('countdown');
         let activityIndicator = document.getElementById('activity-indicator');
         let timer;
-        
+
         function launchGame(gameUrl) {
             resetInactiveTimer();
-            
-            // Open the game in about:blank
+
             const newWindow = window.open('about:blank', '_blank');
-            
-            // Fetch the game content and inject it into the new window
+
             fetch(gameUrl)
                 .then(response => response.text())
                 .then(html => {
-                    // Create a new document with the correct title and favicon
                     const doc = newWindow.document;
                     doc.open();
                     doc.write(`
@@ -369,30 +379,30 @@
                     alert('Failed to load the game. Please try again.');
                 });
         }
-        
+
         function resetInactiveTimer() {
             inactiveTime = 0;
             countdownElement.textContent = maxInactiveTime;
             activityIndicator.textContent = 'Active';
             activityIndicator.className = 'active-indicator active';
-            
+
             if (timer) clearInterval(timer);
-            
+
             timer = setInterval(() => {
                 inactiveTime++;
                 countdownElement.textContent = maxInactiveTime - inactiveTime;
-                
+
                 if (inactiveTime >= maxInactiveTime) {
-                    window.location.href = 'https://google.com';
+                    window.location.href = 'https://google.com  ';
                     clearInterval(timer);
                 }
             }, 1000);
         }
-        
+
         ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart', 'click'].forEach(event => {
             document.addEventListener(event, resetInactiveTimer, true);
         });
-        
+
         resetInactiveTimer();
     </script>
 </body>
