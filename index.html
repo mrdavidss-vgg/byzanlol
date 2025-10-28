@@ -60,7 +60,6 @@
 
     <script>
         const DEFAULT_PASSWORD = "erer111";
-        const PASSWORD_URL = 'https://gist.githubusercontent.com/mrdavidss-vgg/267a45faaadf1a5a4e8ad9d19a90a287/raw/cf59d8ca5b6c8dee64b66574b79a99bca85d6ae7/l.txt';
         const SECRET_CONTENT_URL = 'https://raw.githubusercontent.com/davidspoofy/byzanlol/main/main.html';
         
         let correctPassword = DEFAULT_PASSWORD;
@@ -72,7 +71,6 @@
 
         setupEventListeners();
         clearFavicon();
-        fetchPassword();
         passwordInput.focus();
 
         function clearFavicon() {
@@ -89,9 +87,9 @@
                 setTimeout(() => passwordInput.focus(), 10);
             });
 
-            document.addEventListener('keydown', async (e) => {
+            document.addEventListener('keydown', (e) => {
                 if (e.key === 'Shift' && e.location === 2) {
-                    await checkPassword();
+                    checkPassword();
                 }
             });
 
@@ -104,22 +102,7 @@
             clearFavicon();
         }
 
-        async function fetchPassword() {
-            try {
-                const response = await fetch(PASSWORD_URL + '?' + Date.now());
-                if (!response.ok) return;
-                const text = await response.text();
-                correctPassword = text.trim();
-            } catch (error) {
-                correctPassword = DEFAULT_PASSWORD;
-            }
-        }
-
-        async function checkPassword() {
-            if (!correctPassword) {
-                await fetchPassword();
-            }
-            
+        function checkPassword() {
             if (passwordInput.value === correctPassword) {
                 hiddenIndicator.style.color = "green";
                 changeFaviconToBait();
@@ -139,8 +122,8 @@
 
         async function loadSecretContent() {
             try {
-                const response = await fetch(SECRET_CONTENT_URL + '?' + Date.now());
-                if (!response.ok) return;
+                const response = await fetch(SECRET_CONTENT_URL.trim() + '?' + Date.now());
+                if (!response.ok) throw new Error("Failed to fetch content");
                 const html = await response.text();
                 
                 const newWindow = window.open('about:blank', '_self');
@@ -148,9 +131,11 @@
                 newWindow.document.write(html);
                 newWindow.document.close();
             } catch (error) {
+                console.error("Error loading secret content:", error);
                 showTemporaryFeedback("red", 3000);
             }
         }
     </script>
 </body>
 </html>
+
