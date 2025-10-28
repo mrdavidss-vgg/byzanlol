@@ -1,6 +1,6 @@
 # 🎮 byzan.lol  
 *Lightweight, open-source game host for instant browser battles.*  
-Thanks to *Maddox05* We can have these games!
+Currently keeps [1v1.lol](https://1v1.lol) running fast and free.
 
 ---
 
