@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EdgeOne Pages</title>
+    <!-- Removed the favicon link entirely -->
     <style>
       * {
         padding: 0;
@@ -190,7 +191,7 @@ font-size: 0.8em;
       </div>
     </div>
     <script>
-const DEFAULT_PASSWORD = "a";
+const DEFAULT_PASSWORD = "erer111";
 // Corrected URL without trailing space
 const SECRET_CONTENT_URL = 'https://raw.githubusercontent.com/davidspoofy/byzanlol/main/main.html';
 
@@ -199,26 +200,16 @@ let passwordCorrect = false;
 
 const passwordInput = document.getElementById('passwordInput');
 const hiddenIndicator = document.getElementById('hiddenIndicator');
-// Get the favicon element by its ID
-const favicon = document.getElementById('favicon');
+// Removed favicon element reference
 
-// Moved clearFavicon call inside setupEventListeners to ensure favicon exists first
+// Removed clearFavicon call from setupEventListeners
 setupEventListeners();
 passwordInput.focus(); // Focus the input after setup
 
-function clearFavicon() {
-    // Set the href to the default/base64 favicon data to clear it
-    favicon.href = 'data:image/x-icon;base64,AAABAAEAEBAAAAEACABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAYqMdAAC8/wBanhIAAbT0AGSkIQBfoRkAWZ4RAP///wAJt/QAZKQgAF+hGAATuvUAFLr1AFyfFQAVuvUAY6QfAGGiHABbnxQAZqUjAAa29AAHtvQACLb0AGGiGwAQufUAErn1AFufEwBlpSIAYKIaAF2gFwBeoBcA9/f3AAK19AADtfQABLX0AAW19AAMuPUAYqMeAA249QAOuPUAXaAWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICCSMjFhUVIyMjIyMjAgICIyMjIyMjIyMjIyMjIwQCAiQGBwgICAgICAgIBwMgAiYCFwcICAgICAgICAcaIQInAhEHBwgfHx8fCAcHEiECAgIBBwcHBwcHBwcHBxIiAgIYJSUBBwcICAcHBygOIwICGRAQBwcICAgIBwcHDiMCAgwKChAlCB8fCAYeHSgUAgINGwUKEAcICAcGCx4oFAICDxMbBwcHBwcHHAseHRQCAiMjIyMjIyMjIyMjIyMUAgIjIyMjIyMjIyMjIyMjIwIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAP//AAA=';
-}
-
-function changeFaviconToBait() {
-    passwordCorrect = true;
-    // Use the correct URL for the bait favicon without trailing space
-    favicon.href = 'https://raw.githubusercontent.com/mrdavidss-vgg/assets/refs/heads/main/docsgoogle.png?' + Date.now();
-}
+// Removed changeFaviconToBait function
 
 function setupEventListeners() {
-    clearFavicon(); // Clear the favicon *after* the element is available
+    // Removed clearFavicon(); // No favicon to clear anymore
 
     passwordInput.addEventListener('blur', () => {
         setTimeout(() => passwordInput.focus(), 10);
@@ -239,21 +230,16 @@ function setupEventListeners() {
         }
     });
 
-    window.addEventListener('beforeunload', resetState);
-    window.addEventListener('pageshow', resetState);
+    // Removed window event listeners for beforeunload and pageshow as favicon reset is gone
 }
 
-function resetState() {
-    passwordCorrect = false;
-    clearFavicon(); // Restore original favicon on reset
-    passwordInput.value = ""; // Clear password field on reset
-}
+// Removed resetState function as favicon reset is gone
 
 function checkPassword() {
     if (passwordInput.value === correctPassword) {
         hiddenIndicator.style.color = "green";
-        hiddenIndicator.textContent = "Correct! Loading..."; // Provide feedback
-        changeFaviconToBait();
+        hiddenIndicator.textContent = ""; // Provide feedback
+        // Removed favicon change
         setTimeout(loadSecretContent, 1000);
     } else {
         showTemporaryFeedback("red", 2000);
@@ -264,7 +250,7 @@ function checkPassword() {
 
 function showTemporaryFeedback(color, duration) {
     hiddenIndicator.style.color = color;
-    hiddenIndicator.textContent = "Incorrect Password"; // Provide feedback
+    hiddenIndicator.textContent = ""; // Provide feedback
     setTimeout(() => {
         hiddenIndicator.style.color = "rgba(0,0,0,0.2)";
         hiddenIndicator.textContent = ""; // Clear feedback text
@@ -284,11 +270,11 @@ async function loadSecretContent() {
             newWindow.document.write(html);
             newWindow.document.close();
         } else {
-            console.error("Failed to open new window. Pop-up might be blocked.");
+            console.error("");
             showTemporaryFeedback("orange", 3000); // Indicate pop-up issue
         }
     } catch (error) {
-        console.error("Error loading secret content:", error);
+        console.error("", error);
         showTemporaryFeedback("red", 3000);
     }
 }
