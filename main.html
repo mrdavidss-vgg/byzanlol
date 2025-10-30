@@ -655,7 +655,7 @@
     </style>
 </head>
 <body>
-    <div class="timer">Redirect in: <span id="countdown">15</span>s</div>
+    <div class="timer">Redirect in: <span id="countdown">15</span></div>
     <div class="active-indicator inactive" id="activity-indicator">Inactive</div>
 
     <button id="openSettings" style="position: fixed; top: 20px; left: 20px; background: linear-gradient(135deg, #2c0a47, #1a0a2e); padding: 10px 15px; border-radius: 30px; border: 1px solid rgba(147, 112, 219, 0.4); color: white; cursor: pointer; z-index: 1000;">⚙️ Settings</button>
@@ -753,6 +753,10 @@
                         <div class="game-title"><i>😡</i> Worlds Hardest Game 2</div> 
                         <div class="game-desc">The Class of Worlds Hardest Game 2</div> 
                     </div>
+                    <div class="game-card" onclick="launchGame('https://raw.githubusercontent.com/davidspoofy/byzanlol/refs/heads/main/g4mes/pacman.html')"> 
+                        <div class="game-title"><i>🍒</i> Pac-Man</div> 
+                        <div class="game-desc">The Class of Pacman</div> 
+                    </div>
                 </div>
             </div>
         </div>
@@ -764,7 +768,7 @@
 
     <script>
         let inactiveTime = 0;
-        const maxInactiveTime = 323e+300;
+        const maxInactiveTime = 1e+3000;
         let countdownElement = document.getElementById('countdown');
         let activityIndicator = document.getElementById('activity-indicator');
         let timer;
