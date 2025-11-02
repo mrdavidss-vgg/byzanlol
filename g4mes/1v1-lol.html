@@ -1,49 +1,125 @@
-</style></head><title>byzan.lol</title><body dir="ltr"><script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/UnityProgress.js"></script><script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/2.7.js"></script><script type="text/javascript">
-var gameInstance;
+<!DOCTYPE html>
+<html>
+<head>
+    <title>byzan.lol</title>
+    <style>
+        #fullscreenButton {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent; 
+            border: none;
+            cursor: pointer;
+            z-index: 9999; 
+            display: block;
 
-window.onload = function () {
-gameInstance = UnityLoader.instantiate("gameContainer", "https://cdn.jsdelivr.net/gh/n-101-1/1@main/2.7.json", {
-onProgress: UnityProgress,
-Module: {
-onRuntimeInitialized: function () {
-UnityProgress(gameInstance, "complete");
-},
-},
-});
-};
-</script>
-<div class="webgl-content">
-<div id="gameContainer" style="width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; position: relative; background: rgb(0, 0, 0);"><canvas id="#canvas" style="width: 100%; height: 100%; cursor: default;" width="1018" height="926"></canvas><div class="logo Dark" style="display: none;"></div><div class="progress Dark" style="display: none;"><div class="empty" style="width: 0%;"></div><div class="full" style="width: 100%;"></div></div></div>
-</div>
-<script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/1firebase-app.js"></script>
+        :fullscreen #fullscreenButton {
+            display: none;
+        }
+        #fullscreenButton:hover {
+            background: rgba(0, 0, 0, 0);
+        }
 
-<!-- Add Firebase products that you want to use -->
-<script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/1firebase-auth.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/1firebase-firestore.js"></script>
+        .webgl-content {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/UnityProgress.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/2.7.js"></script>
+</head>
+<body dir="ltr">
+    <button id="fullscreenButton" onclick="toggleFullscreen()"></button>
 
-<script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/1firebase.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/1login.js?v=2"></script>
-<script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/1firestore.js"></script>
+    <script type="text/javascript">
+        var gameInstance;
 
-<script>
-initializeFireBase();
+        window.onload = function () {
+            gameInstance = UnityLoader.instantiate("gameContainer", "https://cdn.jsdelivr.net/gh/n-101-1/1@main/2.7.json", {
+                onProgress: UnityProgress,
+                Module: {
+                    onRuntimeInitialized: function () {
+                        UnityProgress(gameInstance, "complete");
+                    },
+                },
+            });
+        };
+    </script>
+    
+    <div class="webgl-content">
+        <div id="gameContainer" style="width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; position: relative; background: rgb(0, 0, 0);">
+            <canvas id="canvas" style="width: 100%; height: 100%; cursor: default;" width="1018" height="926"></canvas>
+            <div class="logo Dark" style="display: none;"></div>
+            <div class="progress Dark" style="display: none;">
+                <div class="empty" style="width: 0%;"></div>
+                <div class="full" style="width: 100%;"></div>
+            </div>
+        </div>
+    </div>
 
-function showAds() {
-console.log("show ads");
-}
-function unityAdFinishedCallback() {
-try {
-if (gameInstance) gameInstance.SendMessage("AdsManager", "OnWebCallback");
-} catch (error) {
-console.log(error);
-}
-}
-</script>
+    <script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/1firebase-app.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/1firebase-auth.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/1firebase-firestore.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/1firebase.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/1login.js?v=2"></script>
+    <script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/1firestore.js"></script>
 
+    <script>
+        initializeFireBase();
 
+        function showAds() {
+            console.log("show ads");
+        }
+        
+        function unityAdFinishedCallback() {
+            try {
+                if (gameInstance) gameInstance.SendMessage("AdsManager", "OnWebCallback");
+            } catch (error) {
+                console.log(error);
+            }
+        }
 
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                if (document.documentElement.requestFullscreen) {
+                    document.documentElement.requestFullscreen();
+                } else if (document.documentElement.mozRequestFullScreen) {
+                    document.documentElement.mozRequestFullScreen();
+                } else if (document.documentElement.webkitRequestFullscreen) {
+                    document.documentElement.webkitRequestFullscreen();
+                } else if (document.documentElement.msRequestFullscreen) {
+                    document.documentElement.msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { 
+                    document.msExitFullscreen();
+                }
+            }
+        }
 
+        document.addEventListener('fullscreenchange', handleFullscreenChange);
+        document.addEventListener('webkitfullscreenchange', handleFullscreenChange); // Safari
+        document.addEventListener('mozfullscreenchange', handleFullscreenChange);   // Firefox
+        document.addEventListener('MSFullscreenChange', handleFullscreenChange);   // IE/Edge
 
-
-
-</script><script src="blob:https://gotlgsogl-opensocial.googleusercontent.com/43fddd1c-53cc-4d6d-88c5-93762d972e03" id="a96bf7f9ec45ce9224c9b5b9b42b17b2"></script></body></html>
+        function handleFullscreenChange() {
+            const button = document.getElementById('fullscreenButton');
+            
+            if (document.fullscreenElement) {
+                button.style.display = 'none';
+            } else {
+                button.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
