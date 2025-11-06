@@ -408,7 +408,7 @@
             </div>
             <div class="stat">
                 <div class="stat-value" id="cps">0.0</div>
-                <div class="stat-label">Clicks per Second</div>
+                <div class="stat-label">auto click</div>
             </div>
             <div class="stat">
                 <div class="stat-value" id="click-power">1</div>
@@ -449,25 +449,25 @@
             clickPower: 1,
             upgrades: [
                 { id: 1, name: "Sharp Clicks", description: "Increase click power by 1", cost: 5, owned: 0, effect: 1, icon: "fas fa-hand-pointer", type: "click", baseCost: 5 },
-                { id: 2, name: "Click Magnet", description: "Attract 0.1 clicks per second", cost: 100, owned: 0, effect: 0.1, icon: "fas fa-magnet", type: "auto", baseCost: 100 },
-                { id: 3, name: "Faster Clicks", description: "Increase click power by 2", cost: 500, owned: 0, effect: 2, icon: "fas fa-bolt", type: "click", baseCost: 500 },
-                { id: 4, name: "Click Factory", description: "Produce 1 click per second", cost: 1100, owned: 0, effect: 1, icon: "fas fa-industry", type: "auto", baseCost: 1100 },
-                { id: 5, name: "Golden Mouse", description: "Increase click power by 5", cost: 1200, owned: 0, effect: 5, icon: "fas fa-crown", type: "click", baseCost: 1200 },
-                { id: 6, name: "Click Mine", description: "Generate 5 clicks per second", cost: 13000, owned: 0, effect: 5, icon: "fas fa-gem", type: "auto", baseCost: 13000 },
-                { id: 7, name: "Laser Clicks", description: "Increase click power by 10", cost: 20000, owned: 0, effect: 10, icon: "fas fa-crosshairs", type: "click", baseCost: 20000 },
-                { id: 8, name: "Click Farm", description: "Produce 10 clicks per second", cost: 50000, owned: 0, effect: 10, icon: "fas fa-seedling", type: "auto", baseCost: 50000 },
-                { id: 9, name: "Quantum Mouse", description: "Increase click power by 50", cost: 100000, owned: 0, effect: 50, icon: "fas fa-atom", type: "click", baseCost: 100000 },
-                { id: 10, name: "Click Factory II", description: "Generate 25 clicks per second", cost: 200000, owned: 0, effect: 25, icon: "fas fa-building", type: "auto", baseCost: 200000 },
+                { id: 2, name: "Click Magnet", description: "Attract 1 Auto Click", cost: 20, owned: 0, effect: 1, icon: "fas fa-magnet", type: "auto", baseCost: 20 },
+                { id: 3, name: "Faster Clicks", description: "Increase click power by 2", cost: 100, owned: 0, effect: 5, icon: "fas fa-bolt", type: "click", baseCost: 100 },
+                { id: 4, name: "Click Factory", description: "Produce 5 auto click", cost: 545, owned: 0, effect: 5, icon: "fas fa-industry", type: "auto", baseCost: 545 },
+                { id: 5, name: "Golden Mouse", description: "Increase click power by 5", cost: 200, owned: 0, effect: 5, icon: "fas fa-crown", type: "click", baseCost: 200 },
+                { id: 6, name: "Click Mine", description: "Generate 20 auto click (Overpowered!)", cost: 1500, owned: 0, effect: 20, icon: "fas fa-gem", type: "auto", baseCost: 1500 },
+                { id: 7, name: "Laser Clicks", description: "Increase click power by 20", cost: 2000, owned: 0, effect: 10, icon: "fas fa-crosshairs", type: "click", baseCost: 2000 },
+                { id: 8, name: "Click Farm", description: "Produce 50 auto click", cost: 86500, owned: 0, effect: 50, icon: "fas fa-seedling", type: "auto", baseCost: 86500 },
+                { id: 9, name: "Quantum Mouse", description: "Increase click power by 50", cost: 100000, owned: 0, effect: 100, icon: "fas fa-atom", type: "click", baseCost: 100000 },
+                { id: 10, name: "Click Factory II", description: "Generate 25 auto click", cost: 200000, owned: 0, effect: 25, icon: "fas fa-building", type: "auto", baseCost: 200000 },
                 { id: 11, name: "Hyper Clicks", description: "Increase click power by 100", cost: 500000, owned: 0, effect: 100, icon: "fas fa-rocket", type: "click", baseCost: 500000 },
-                { id: 12, name: "Click Planet", description: "Produce 100 clicks per second", cost: 1000000, owned: 0, effect: 100, icon: "fas fa-globe-americas", type: "auto", baseCost: 1000000 },
+                { id: 12, name: "Click Planet", description: "Produce 100 auto click", cost: 1000000, owned: 0, effect: 100, icon: "fas fa-globe-americas", type: "auto", baseCost: 1000000 },
                 { id: 13, name: "Cosmic Mouse", description: "Increase click power by 500", cost: 5000000, owned: 0, effect: 500, icon: "fas fa-ring", type: "click", baseCost: 5000000 },
-                { id: 14, name: "Click Galaxy", description: "Generate 500 clicks per second", cost: 10000000, owned: 0, effect: 500, icon: "fas fa-star", type: "auto", baseCost: 10000000 },
+                { id: 14, name: "Click Galaxy", description: "Generate 500 auto click", cost: 10000000, owned: 0, effect: 500, icon: "fas fa-star", type: "auto", baseCost: 10000000 },
                 { id: 15, name: "Infinite Clicks", description: "Increase click power by 1000", cost: 50000000, owned: 0, effect: 1000, icon: "fas fa-infinity", type: "click", baseCost: 50000000 },
-                { id: 16, name: "Click Universe", description: "Produce 2000 clicks per second", cost: 100000000, owned: 0, effect: 2000, icon: "fas fa-sun", type: "auto", baseCost: 100000000 },
+                { id: 16, name: "Click Universe", description: "Produce 2000 auto click", cost: 100000000, owned: 0, effect: 2000, icon: "fas fa-sun", type: "auto", baseCost: 100000000 },
                 { id: 17, name: "Supernova Mouse", description: "Increase click power by 5000", cost: 500000000, owned: 0, effect: 5000, icon: "fas fa-fire", type: "click", baseCost: 500000000 },
-                { id: 18, name: "Click Dimension", description: "Generate 10000 clicks per second", cost: 1000000000, owned: 0, effect: 10000, icon: "fas fa-dna", type: "auto", baseCost: 1000000000 },
+                { id: 18, name: "Click Dimension", description: "Generate 10000 auto click", cost: 1000000000, owned: 0, effect: 10000, icon: "fas fa-dna", type: "auto", baseCost: 1000000000 },
                 { id: 19, name: "Quantum Clicks", description: "Increase click power by 50000", cost: 5000000000, owned: 0, effect: 50000, icon: "fas fa-atom", type: "click", baseCost: 5000000000 },
-                { id: 20, name: "Click Multiverse", description: "Produce 50000 clicks per second", cost: 10000000000, owned: 0, effect: 50000, icon: "fas fa-globe-americas", type: "auto", baseCost: 10000000000 }
+                { id: 20, name: "Click Multiverse", description: "Produce 50000 auto click", cost: 10000000000, owned: 0, effect: 50000, icon: "fas fa-globe-americas", type: "auto", baseCost: 10000000000000 }
             ]
         };
 
