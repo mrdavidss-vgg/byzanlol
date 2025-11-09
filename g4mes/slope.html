@@ -5,21 +5,7 @@
   <link rel="stylesheet" href="https://maddox05.github.io/basic-ruffle-player/html/slope/TemplateData/style.css" />
   <script src="https://maddox05.github.io/basic-ruffle-player/html/slope/TemplateData/UnityProgress.js"></script>
   <script src="https://maddox05.github.io/basic-ruffle-player/html/slope/TemplateData/unityloader41.js"></script>
-  <script>
-    var gameInstance = UnityLoader.instantiate(
-      "gameContainer",
-      "https://maddox05.github.io/basic-ruffle-player/html/slope/Build/slope.json",
-      {
-        onProgress: UnityProgress,
-        Module: {
-          onRuntimeInitialized: function () {
-            UnityProgress(gameInstance, "complete");
-          },
-        },
-      }
-    );
-  </script>
-
+  
   <style>
     .alert {
       padding: 20px;
@@ -44,21 +30,95 @@
     .closebtn:hover {
       color: black;
     }
+
+    #fullscreenButton {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 9999;
+      display: block;
+    }
+
+    :fullscreen #fullscreenButton {
+      display: none;
+    }
+
+    #fullscreenButton:hover {
+      background: rgba(0, 0, 0, 0);
+    }
+
+    .webgl-content {
+      width: 100%;
+      height: 100%;
+    }
   </style>
+  
+  <script>
+    var gameInstance = UnityLoader.instantiate(
+      "gameContainer",
+      "https://maddox05.github.io/basic-ruffle-player/html/slope/Build/slope.json",
+      {
+        onProgress: UnityProgress,
+        Module: {
+          onRuntimeInitialized: function () {
+            UnityProgress(gameInstance, "complete");
+          },
+        },
+      }
+    );
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        if (document.documentElement.requestFullscreen) {
+          document.documentElement.requestFullscreen();
+        } else if (document.documentElement.mozRequestFullScreen) {
+          document.documentElement.mozRequestFullScreen();
+        } else if (document.documentElement.webkitRequestFullscreen) {
+          document.documentElement.webkitRequestFullscreen();
+        } else if (document.documentElement.msRequestFullscreen) {
+          document.documentElement.msRequestFullscreen();
+        }
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        }
+      }
+    }
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+    document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+    document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+
+    function handleFullscreenChange() {
+      const button = document.getElementById('fullscreenButton');
+      
+      if (document.fullscreenElement) {
+        button.style.display = 'none';
+      } else {
+        button.style.display = 'block';
+      }
+    }
+  </script>
 </head>
 
-<!--- 
-Want to run or host yourself? Check out the source? 
-https://github.com/cgolden15/Slope-Game/  
-
-Drop a star on the repo if you enjoy.
---->
-
 <body style="margin: 0; overflow: hidden">
+  <button id="fullscreenButton" onclick="toggleFullscreen()"></button>
+
   <div class="webgl-content">
     <div id="gameContainer" style="width: 100%; height: 100%; margin: 0"></div>
   </div>
-  <!-- <a title="GDPR-compliant Web Analytics" href="https://clicky.com/101393847 "><img alt="Clicky" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a> -->
   <script async src="https://maddox05.github.io/basic-ruffle-player/html/slope/static.getclicky.com/101393847.js"></script>
   <noscript
     ><p>
@@ -70,4 +130,3 @@ Drop a star on the repo if you enjoy.
       /></p
   ></noscript>
 </body>
-<!-- Slope game by y8 games, not me.-->

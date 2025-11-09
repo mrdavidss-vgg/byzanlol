@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>byzan.lol (ai mouse clicker)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #4b6cb7, #182848);
+            color: #fff;
+            min-height: 100vh;
+            padding: 15px;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .debug-panel {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            overflow-y: auto;
+        }
+        
+        .debug-panel.active {
+            transform: translateX(0);
+        }
+        
+        .debug-header {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #4a90e2;
+            font-size: 1.4rem;
+        }
+        
+        .debug-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(30, 30, 50, 0.5);
+            border-radius: 8px;
+        }
+        
+        .debug-section h3 {
+            margin-bottom: 10px;
+            color: #ffcc00;
+        }
+        
+        .multiplier-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        
+        .multiplier-btn {
+            background: #4a90e2;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        
+        .multiplier-btn:hover {
+            background: #5e60ce;
+        }
+        
+        .multiplier-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .debug-controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        
+        .debug-btn {
+            background: #4a90e2;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        
+        .debug-btn:hover {
+            background: #5e60ce;
+        }
+        
+        .debug-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .debug-btn.x2 {
+            background: #2ecc71;
+        }
+        
+        .debug-btn.x2:hover {
+            background: #27ae60;
+        }
+        
+        .debug-btn.x5 {
+            background: #e74c3c;
+        }
+        
+        .debug-btn.x5:hover {
+            background: #c0392b;
+        }
+        
+        header {
+            text-align: center;
+            padding: 15px 0;
+            margin-bottom: 15px;
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            color: #4a90e2;
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #4a90e2;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+        
+        .game-area {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .clicker-section {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .section-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            text-align: center;
+            color: #4a90e2;
+            border-bottom: 1px solid #4a90e2;
+            padding-bottom: 8px;
+        }
+        
+        .mouse-container {
+            position: relative;
+            margin: 20px auto;
+            width: 120px;
+            height: 120px;
+            cursor: pointer;
+            transition: transform 0.1s;
+            animation: pulse 2s infinite;
+        }
+        
+        .mouse-container:active {
+            transform: scale(0.95);
+        }
+        
+        .mouse-icon {
+            font-size: 80px;
+            color: #4a90e2;
+            transition: all 0.2s ease;
+        }
+        
+        .click-effect {
+            position: absolute;
+            font-size: 18px;
+            color: #4a90e2;
+            pointer-events: none;
+            animation: floatUp 1s forwards;
+            z-index: 10;
+            font-weight: bold;
+        }
+        
+        @keyframes floatUp {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-30px); opacity: 0; }
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(74, 144, 226, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(74, 144, 226, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(74, 144, 226, 0); }
+        }
+        
+        .upgrades-section {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .upgrades-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        
+        .upgrade {
+            background: rgba(30, 30, 50, 0.8);
+            border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.2s, background 0.2s;
+            border: 1px solid #4a90e2;
+            font-size: 0.85rem;
+        }
+        
+        .upgrade:hover {
+            background: rgba(50, 50, 80, 0.9);
+            transform: translateY(-3px);
+        }
+        
+        .upgrade-icon {
+            font-size: 1.4rem;
+            color: #4a90e2;
+            width: 35px;
+            text-align: center;
+        }
+        
+        .upgrade-info {
+            flex: 1;
+        }
+        
+        .upgrade-name {
+            font-weight: 500;
+            margin-bottom: 3px;
+        }
+        
+        .upgrade-description {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            margin-bottom: 4px;
+        }
+        
+        .upgrade-cost {
+            font-size: 0.8rem;
+            color: #4a90e2;
+        }
+        
+        .upgrade-btn {
+            background: linear-gradient(to right, #4a90e2, #5e60ce);
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+        
+        .upgrade-btn:hover {
+            background: linear-gradient(to right, #5e60ce, #4a90e2);
+            transform: scale(1.05);
+        }
+        
+        .upgrade-btn:disabled {
+            background: #555;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .instructions {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 0.85rem;
+        }
+        
+        .instructions h3 {
+            color: #4a90e2;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        
+        .instructions ul {
+            padding-left: 15px;
+        }
+        
+        .instructions li {
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+        
+        @media (max-width: 600px) {
+            .stats-container {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .upgrades-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .debug-panel {
+                width: 100%;
+                height: 300px;
+                bottom: 0;
+                top: auto;
+                transform: translateY(100%);
+            }
+            
+            .debug-panel.active {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="debug-panel" id="debug-panel">
+        <div class="debug-header">Debug Tools</div>
+        
+        <div class="debug-section">
+            <h3>Multipliers</h3>
+            <div class="multiplier-buttons">
+                <button class="multiplier-btn" data-multiplier="2">x2</button>
+                <button class="multiplier-btn" data-multiplier="10">x10</button>
+                <button class="multiplier-btn" data-multiplier="1000">x1k</button>
+                <button class="multiplier-btn" data-multiplier="10000">x10k</button>
+            </div>
+        </div>
+        
+        <div class="debug-section">
+            <h3>Quick Actions</h3>
+            <div class="debug-controls">
+                <button class="debug-btn" id="add-clicks">+1000 Clicks</button>
+                <button class="debug-btn x2" id="x2-upgrades">x2 Upgrades</button>
+                <button class="debug-btn x5" id="x5-upgrades">x5 Upgrades</button>
+                <button class="debug-btn" id="reset-game">Reset Game</button>
+            </div>
+        </div>
+        
+        <div class="debug-section">
+            <h3>Game Stats</h3>
+            <p>Clicks: <span id="debug-clicks">0</span></p>
+            <p>CPS: <span id="debug-cps">0.0</span></p>
+            <p>Click Power: <span id="debug-power">1</span></p>
+        </div>
+    </div>
+    
+    <div class="container" id="game-container">
+        <header>
+            <h1><i class="fas fa-mouse"></i> Mouse Clicker</h1>
+            <p>Click the mouse to earn clicks! Buy upgrades to increase your clicking power.</p>
+        </header>
+        
+        <div class="stats-container">
+            <div class="stat">
+                <div class="stat-value" id="clicks-count">0</div>
+                <div class="stat-label">Clicks</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="cps">0.0</div>
+                <div class="stat-label">auto click</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="click-power">1</div>
+                <div class="stat-label">Per Click</div>
+            </div>
+        </div>
+        
+        <div class="game-area">
+            <div class="clicker-section">
+                <h2 class="section-title">Click the Mouse!</h2>
+                <div class="mouse-container" id="mouse-clicker">
+                    <i class="fas fa-mouse mouse-icon"></i>
+                </div>
+                <p>Click the mouse to earn clicks! Each click gives you <span id="click-value">1</span> click.</p>
+            </div>
+            
+            <div class="upgrades-section">
+                <h2 class="section-title">Upgrades</h2>
+                <div class="upgrades-grid" id="upgrades-container">
+                </div>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h3>How to Play</h3>
+            <ul>
+                <li>Click the mouse icon to earn clicks</li>
+                <li>Buy upgrades to increase your clicking power or generate clicks automatically</li>
+                <li>Progress is automatically saved to your browser</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const gameState = {
+            clicks: 0,
+            cps: 0,
+            clickPower: 1,
+            upgrades: [
+                { id: 1, name: "Sharp Clicks", description: "Increase click power by 1", cost: 5, owned: 0, effect: 1, icon: "fas fa-hand-pointer", type: "click", baseCost: 5 },
+                { id: 2, name: "Click Magnet", description: "Attract 1 Auto Click", cost: 20, owned: 0, effect: 1, icon: "fas fa-magnet", type: "auto", baseCost: 20 },
+                { id: 3, name: "Faster Clicks", description: "Increase click power by 2", cost: 100, owned: 0, effect: 5, icon: "fas fa-bolt", type: "click", baseCost: 100 },
+                { id: 4, name: "Click Factory", description: "Produce 5 auto click", cost: 545, owned: 0, effect: 5, icon: "fas fa-industry", type: "auto", baseCost: 545 },
+                { id: 5, name: "Golden Mouse", description: "Increase click power by 5", cost: 200, owned: 0, effect: 5, icon: "fas fa-crown", type: "click", baseCost: 200 },
+                { id: 6, name: "Click Mine", description: "Generate 20 auto click (Overpowered!)", cost: 1500, owned: 0, effect: 20, icon: "fas fa-gem", type: "auto", baseCost: 1500 },
+                { id: 7, name: "Laser Clicks", description: "Increase click power by 20", cost: 2000, owned: 0, effect: 10, icon: "fas fa-crosshairs", type: "click", baseCost: 2000 },
+                { id: 8, name: "Click Farm", description: "Produce 50 auto click", cost: 86500, owned: 0, effect: 50, icon: "fas fa-seedling", type: "auto", baseCost: 86500 },
+                { id: 9, name: "Quantum Mouse", description: "Increase click power by 50", cost: 100000, owned: 0, effect: 100, icon: "fas fa-atom", type: "click", baseCost: 100000 },
+                { id: 10, name: "Click Factory II", description: "Generate 25 auto click", cost: 200000, owned: 0, effect: 25, icon: "fas fa-building", type: "auto", baseCost: 200000 },
+                { id: 11, name: "Hyper Clicks", description: "Increase click power by 100", cost: 500000, owned: 0, effect: 100, icon: "fas fa-rocket", type: "click", baseCost: 500000 },
+                { id: 12, name: "Click Planet", description: "Produce 100 auto click", cost: 1000000, owned: 0, effect: 100, icon: "fas fa-globe-americas", type: "auto", baseCost: 1000000 },
+                { id: 13, name: "Cosmic Mouse", description: "Increase click power by 500", cost: 5000000, owned: 0, effect: 500, icon: "fas fa-ring", type: "click", baseCost: 5000000 },
+                { id: 14, name: "Click Galaxy", description: "Generate 500 auto click", cost: 10000000, owned: 0, effect: 500, icon: "fas fa-star", type: "auto", baseCost: 10000000 },
+                { id: 15, name: "Infinite Clicks", description: "Increase click power by 1000", cost: 50000000, owned: 0, effect: 1000, icon: "fas fa-infinity", type: "click", baseCost: 50000000 },
+                { id: 16, name: "Click Universe", description: "Produce 2000 auto click", cost: 100000000, owned: 0, effect: 2000, icon: "fas fa-sun", type: "auto", baseCost: 100000000 },
+                { id: 17, name: "Supernova Mouse", description: "Increase click power by 5000", cost: 500000000, owned: 0, effect: 5000, icon: "fas fa-fire", type: "click", baseCost: 500000000 },
+                { id: 18, name: "Click Dimension", description: "Generate 10000 auto click", cost: 1000000000, owned: 0, effect: 10000, icon: "fas fa-dna", type: "auto", baseCost: 1000000000 },
+                { id: 19, name: "Quantum Clicks", description: "Increase click power by 50000", cost: 5000000000, owned: 0, effect: 50000, icon: "fas fa-atom", type: "click", baseCost: 5000000000 },
+                { id: 20, name: "Click Multiverse", description: "Produce 50000 auto click", cost: 10000000000, owned: 0, effect: 50000, icon: "fas fa-globe-americas", type: "auto", baseCost: 10000000000000 }
+            ]
+        };
+
+        const clicksCountEl = document.getElementById('clicks-count');
+        const cpsEl = document.getElementById('cps');
+        const clickPowerEl = document.getElementById('click-power');
+        const clickValueEl = document.getElementById('click-value');
+        const mouseClickerEl = document.getElementById('mouse-clicker');
+        const upgradesContainerEl = document.getElementById('upgrades-container');
+        const debugPanelEl = document.getElementById('debug-panel');
+        const addClicksBtn = document.getElementById('add-clicks');
+        const x2UpgradesBtn = document.getElementById('x2-upgrades');
+        const x5UpgradesBtn = document.getElementById('x5-upgrades');
+        const resetGameBtn = document.getElementById('reset-game');
+        const gameContainerEl = document.getElementById('game-container');
+        const debugClicksEl = document.getElementById('debug-clicks');
+        const debugCpsEl = document.getElementById('debug-cps');
+        const debugPowerEl = document.getElementById('debug-power');
+
+        let lastUpdate = Date.now();
+        let accumulatedClicks = 0;
+
+        let targetClicks = 0;
+        let targetCps = 0;
+        let targetClickPower = 0;
+        let animationRunning = false;
+
+        let audioContext;
+        let clickSound;
+
+        function loadGameState() {
+            const savedState = localStorage.getItem('mouseClickerState');
+            if (savedState) {
+                const parsedState = JSON.parse(savedState);
+                gameState.clicks = parsedState.clicks || 0;
+                gameState.cps = parsedState.cps || 0;
+                gameState.clickPower = parsedState.clickPower || 1;
+                
+                if (parsedState.upgrades) {
+                    for (let i = 0; i < gameState.upgrades.length; i++) {
+                        if (parsedState.upgrades[i]) {
+                            gameState.upgrades[i].owned = parsedState.upgrades[i].owned || 0;
+                            gameState.upgrades[i].cost = parsedState.upgrades[i].cost || gameState.upgrades[i].baseCost;
+                        }
+                    }
+                }
+            }
+            
+            applyUpgradeEffects();
+            
+            targetClicks = gameState.clicks;
+            targetCps = gameState.cps;
+            targetClickPower = gameState.clickPower;
+            
+            updateUI();
+            updateDebugStats();
+        }
+
+        function applyUpgradeEffects() {
+            gameState.clickPower = 1; 
+            gameState.cps = 0;
+            gameState.upgrades.forEach(upgrade => {
+                if (upgrade.type === "click") {
+                    gameState.clickPower += upgrade.effect * upgrade.owned;
+                } else if (upgrade.type === "auto") {
+                    gameState.cps += upgrade.effect * upgrade.owned;
+                }
+            });
+        }
+
+        function saveGameState() {
+            localStorage.setItem('mouseClickerState', JSON.stringify({
+                clicks: gameState.clicks,
+                cps: gameState.cps,
+                clickPower: gameState.clickPower,
+                upgrades: gameState.upgrades
+            }));
+        }
+
+        function initGame() {
+            loadGameState();
+            renderUpgrades();
+            
+            mouseClickerEl.addEventListener('click', handleClick);
+            addClicksBtn.addEventListener('click', () => addClicks(1000));
+            x2UpgradesBtn.addEventListener('click', () => multiplyUpgrades(2));
+            x5UpgradesBtn.addEventListener('click', () => multiplyUpgrades(5));
+            resetGameBtn.addEventListener('click', resetGame);
+            
+            document.addEventListener('keydown', handleKeyDown);
+            
+            document.querySelectorAll('.multiplier-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const multiplier = parseInt(this.getAttribute('data-multiplier'));
+                    multiplyClicks(multiplier);
+                });
+            });
+            
+            requestAnimationFrame(gameLoop);
+            
+            setInterval(saveGameState, 10000);
+        }
+
+        function handleKeyDown(e) {
+            if (e.keyCode === 220) {
+                toggleDebugPanel();
+            }
+        }
+
+        function toggleDebugPanel() {
+            debugPanelEl.classList.toggle('active');
+            
+            setTimeout(() => {
+                if (debugPanelEl.classList.contains('active')) {
+                    gameContainerEl.style.transform = 'translateX(250px)';
+                } else {
+                    gameContainerEl.style.transform = 'translateX(0)';
+                }
+            }, 10);
+        }
+
+        function gameLoop() {
+            const now = Date.now();
+            const deltaTime = (now - lastUpdate) / 1000;
+            lastUpdate = now;
+            
+            if (gameState.cps > 0) {
+                accumulatedClicks += gameState.cps * deltaTime;
+                
+                const clicksToAdd = Math.floor(accumulatedClicks);
+                if (clicksToAdd > 0) {
+                    gameState.clicks += clicksToAdd;
+                    accumulatedClicks -= clicksToAdd;
+                    
+                    targetClicks = gameState.clicks;
+                    
+                    if (!animationRunning) {
+                        updateUI();
+                    }
+                    
+                    renderUpgrades(); 
+                }
+            }
+            
+            requestAnimationFrame(gameLoop);
+        }
+
+        function handleClick(e) {
+            gameState.clicks += gameState.clickPower;
+            
+            targetClicks = gameState.clicks;
+            
+            createClickEffect(e.clientX, e.clientY);
+            
+            playClickSound();
+            
+            if (!animationRunning) {
+                updateUI();
+            }
+            
+            renderUpgrades(); 
+        }
+
+        function playClickSound() {
+            try {
+                if (!audioContext) {
+                    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                
+                // Create oscillator for sound
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.type = 'sine';
+                oscillator.frequency.value = 800; 
+                gainNode.gain.value = 0.2; // Volume
+                
+                oscillator.start();
+                gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.1);
+                oscillator.stop(audioContext.currentTime + 0.1);
+            } catch (e) {
+                console.log("Audio error:", e);
+            }
+        }
+
+        function createClickEffect(x, y) {
+            const effect = document.createElement('div');
+            effect.className = 'click-effect';
+            effect.textContent = `+${gameState.clickPower}`;
+            effect.style.left = `${x}px`;
+            effect.style.top = `${y}px`;
+            document.body.appendChild(effect);
+            
+            setTimeout(() => {
+                effect.remove();
+            }, 1000);
+        }
+
+        function buyUpgrade(upgradeId) {
+            const upgrade = gameState.upgrades.find(u => u.id === upgradeId);
+            if (!upgrade) return;
+            
+            if (gameState.clicks >= upgrade.cost) {
+                gameState.clicks -= upgrade.cost;
+                
+                targetClicks = gameState.clicks;
+                
+                upgrade.owned++;
+                
+                if (upgrade.type === "click") {
+                    gameState.clickPower += upgrade.effect;
+                    targetClickPower = gameState.clickPower;
+                } else if (upgrade.type === "auto") {
+                    gameState.cps += upgrade.effect;
+                    targetCps = gameState.cps;
+                }
+                
+                upgrade.cost = Math.floor(upgrade.cost * 1.15);
+                
+                if (!animationRunning) {
+                    updateUI();
+                }
+                
+                renderUpgrades();
+                saveGameState();
+            }
+        }
+
+        function updateUI() {
+            animationRunning = true;
+            
+            if (gameState.clicks !== targetClicks) {
+                gameState.clicks += (targetClicks - gameState.clicks) * 0.1;
+                if (Math.abs(targetClicks - gameState.clicks) < 0.1) {
+                    gameState.clicks = targetClicks;
+                }
+            }
+            
+            if (gameState.cps !== targetCps) {
+                gameState.cps += (targetCps - gameState.cps) * 0.1;
+                if (Math.abs(targetCps - gameState.cps) < 0.01) {
+                    gameState.cps = targetCps;
+                }
+            }
+            
+            if (gameState.clickPower !== targetClickPower) {
+                gameState.clickPower += (targetClickPower - gameState.clickPower) * 0.1;
+                if (Math.abs(targetClickPower - gameState.clickPower) < 0.1) {
+                    gameState.clickPower = targetClickPower;
+                }
+            }
+            
+            clicksCountEl.textContent = formatNumber(gameState.clicks);
+            cpsEl.textContent = gameState.cps.toFixed(1);
+            clickPowerEl.textContent = formatNumber(gameState.clickPower);
+            clickValueEl.textContent = formatNumber(gameState.clickPower);
+            
+            if (Math.abs(targetClicks - gameState.clicks) > 0.1 || 
+                Math.abs(targetCps - gameState.cps) > 0.01 || 
+                Math.abs(targetClickPower - gameState.clickPower) > 0.1) {
+                requestAnimationFrame(updateUI);
+            } else {
+                animationRunning = false;
+            }
+        }
+
+        function renderUpgrades() {
+            upgradesContainerEl.innerHTML = '';
+            
+            gameState.upgrades.forEach(upgrade => {
+                const upgradeEl = document.createElement('div');
+                upgradeEl.className = 'upgrade';
+                
+                const canAfford = gameState.clicks >= upgrade.cost;
+                
+                upgradeEl.innerHTML = `
+                    <div class="upgrade-icon">
+                        <i class="${upgrade.icon}"></i>
+                    </div>
+                    <div class="upgrade-info">
+                        <div class="upgrade-name">${upgrade.name} ${upgrade.owned > 0 ? `(${upgrade.owned})` : ''}</div>
+                        <div class="upgrade-description">${upgrade.description}</div>
+                        <div class="upgrade-cost">Cost: ${formatNumber(upgrade.cost)} clicks</div>
+                    </div>
+                    <button class="upgrade-btn" ${canAfford ? '' : 'disabled'} onclick="buyUpgrade(${upgrade.id})">
+                        Buy
+                    </button>
+                `;
+                
+                upgradesContainerEl.appendChild(upgradeEl);
+            });
+        }
+
+        function formatNumber(num) {
+            if (num >= 1e12) {
+                return (num / 1e12).toFixed(2) + 'T';
+            } else if (num >= 1e9) {
+                return (num / 1e9).toFixed(2) + 'B';
+            } else if (num >= 1e6) {
+                return (num / 1e6).toFixed(2) + 'M';
+            } else if (num >= 1e3) {
+                return (num / 1e3).toFixed(2) + 'K';
+            } else {
+                return Math.floor(num).toLocaleString();
+            }
+        }
+
+        function addClicks(amount) {
+            gameState.clicks += amount;
+            targetClicks = gameState.clicks;
+            if (!animationRunning) {
+                updateUI();
+            }
+            renderUpgrades();
+            saveGameState();
+            updateDebugStats();
+        }
+
+        function multiplyClicks(factor) {
+            gameState.clicks *= factor;
+            targetClicks = gameState.clicks;
+            if (!animationRunning) {
+                updateUI();
+            }
+            renderUpgrades();
+            saveGameState();
+            updateDebugStats();
+        }
+
+        function multiplyUpgrades(factor) {
+            for (let i = 0; i < gameState.upgrades.length; i++) {
+                const upgrade = gameState.upgrades[i];
+                
+                const newOwned = Math.floor(upgrade.owned * factor);
+                const additional = newOwned - upgrade.owned;
+                
+                if (additional > 0) {
+                    upgrade.owned = newOwned;
+                    
+                    if (upgrade.type === "click") {
+                        gameState.clickPower += upgrade.effect * additional;
+                        targetClickPower = gameState.clickPower;
+                    } else if (upgrade.type === "auto") {
+                        gameState.cps += upgrade.effect * additional;
+                        targetCps = gameState.cps;
+                    }
+
+                    upgrade.cost = Math.floor(upgrade.cost * Math.pow(1.15, additional));
+                }
+            }
+            
+            if (!animationRunning) {
+                updateUI();
+            }
+            renderUpgrades();
+            saveGameState();
+            updateDebugStats();
+        }
+
+        function resetGame() {
+            localStorage.removeItem('mouseClickerState');
+            
+            gameState.clicks = 0;
+            gameState.cps = 0;
+            gameState.clickPower = 1;
+            
+            gameState.upgrades.forEach(upgrade => {
+                upgrade.owned = 0;
+                upgrade.cost = upgrade.baseCost;
+            });
+            
+            targetClicks = 0;
+            targetCps = 0;
+            targetClickPower = 1;
+            
+            updateUI();
+            renderUpgrades();
+            updateDebugStats();
+        }
+
+        function updateDebugStats() {
+            debugClicksEl.textContent = formatNumber(gameState.clicks);
+            debugCpsEl.textContent = gameState.cps.toFixed(1);
+            debugPowerEl.textContent = formatNumber(gameState.clickPower);
+        }
+
+        window.onload = initGame;
+        
+        window.buyUpgrade = buyUpgrade;
+    </script>
+</body>
+</html>
